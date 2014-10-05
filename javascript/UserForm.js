@@ -84,6 +84,12 @@
 			});
 		};
 		
+		userforms.appendToURL = function(url, pathsegmenttobeadded) {
+			var parts = url.match(/([^\?#]*)?(\?[^#]*)?(#.*)?/);
+			for(var i in parts) if(!parts[i]) parts[i] = '';
+			return parts[1] + pathsegmenttobeadded + parts[2] + parts[3];
+		}
+
 		/**
 		 * Workaround for not refreshing the sort.
 		 * 
@@ -102,34 +108,6 @@
 		
 		$.entwine('udf', function($){
 			
-			/*--------------------- SUBMISSIONS ------------------------ */
-			
-			/**
-			 * Delete a given Submission from the form
-			 */
-			$("#userforms-submissions .deleteSubmission").live('click', function(event) {
-				event.preventDefault();
-				var deletedSubmission = $(this);
-				$.post($(this).attr('href'), function(data) {
-					deletedSubmission.parents('div.userform-submission').slideUp(function(){$(this).remove()});
-				});
-			});
-
-			/**
-			 * Delete all submissions and fade them out if successful
-			 */
-			$("#userforms-submissions .deleteAllSubmissions").live('click', function(event) {
-				event.preventDefault();
-				if(!confirm(userforms.message('CONFIRM_DELETE_ALL_SUBMISSIONS'))) {
-					return;
-				}
-				var self = this;
-				$.post($(this).attr('href'), function(data) {
-					$(self).parents('#userforms-submissions').children().slideUp(function(){$(this).remove()})
-				});
-
-			});
-			
 			/*-------------------- FIELD EDITOR ----------------------- */
 			
 			/**
@@ -138,18 +116,19 @@
 			 */
 			$('div.FieldEditor .MenuHolder .action').entwine({
 				onclick: function(e) {
+					var form = $("#Form_EditForm"),
+						length = $(".FieldInfo").length + 1, 
+						fieldType = $(this).siblings("select").val(),
+						formData = form.serialize()+'NewID='+ length +"&Type="+ fieldType, 
+						fieldEditor = $(this).closest('.FieldEditor');
+
 					e.preventDefault();
-					if($("#Fields").hasClass('readonly')) {
+
+					if($("#Fields").hasClass('readonly') || !fieldType) {
 						return;
 					}
 					
-					// variables
-					var form = $("#Form_EditForm");
-					var length = $(".FieldInfo").length + 1;
-					var fieldType = $(this).siblings("select").val();
-					var formData = form.serialize()+'NewID='+ length +"&Type="+ fieldType;
-					var fieldEditor = $(this).closest('.FieldEditor');
-
+					
 					// Due to some very weird behaviout of jquery.metadata, the url have to be double quoted
 					var addURL = fieldEditor.attr('data-add-url').substr(1, fieldEditor.attr('data-add-url').length-2);
 
@@ -160,14 +139,16 @@
 						data: formData, 
 						success: function(data) {
 							$('#Fields_fields').append(data);
+
 							statusMessage(userforms.message('ADDED_FIELD'));
+							
 							var name = $("#Fields_fields li.EditableFormField:last").attr("id").split(' ');
 
 							$("#Fields_fields select.fieldOption").append("<option value='"+ name[2] +"'>New "+ name[2] + "</option>");
 							$("#Fields_fields").sortable('refresh');
 						},
 						error: function(e) {
-							alert(ss.i18n._t('GRIDFIELD.ERRORINTRANSACTION', 'An error occured while fetching data from the server\n Please try again later.'));
+							alert(ss.i18n._t('GRIDFIELD.ERRORINTRANSACTION'));
 						}
 					});
 				}
@@ -256,15 +237,15 @@
 
 					// variables
 					var options = $(this).parent("li");
-					var action = $("#Form_EditForm").attr("action") + '/field/Fields/addoptionfield';
+					var action = userforms.appendToURL($("#Form_EditForm").attr("action"), '/field/Fields/addoptionfield');
 					var parent = $(this).attr("rel");
+					var securityID = ($("input[name=SecurityID]").length > 0) ? $("input[name=SecurityID]").first().attr("value") : '';
 
 					// send ajax request to the page
 					$.ajax({
 						type: "GET",
 						url: action,
-						data: 'Parent='+ parent,
-
+						data: 'Parent='+ parent +'&SecurityID='+securityID,
 						// create a new field
 						success: function(msg){
 							options.before(msg);
@@ -289,8 +270,8 @@
 					e.preventDefault();
 					
 					// pass the deleted status onto the element
-					$(this).parent("li").children("[type=text]").attr("value", "field-node-deleted");
-					$(this).parent("li").hide();
+					$(this).parents("li:first").find("[type=text]:first").attr("value", "field-node-deleted");
+					$(this).parents("li:first").hide();
 
 					// Give the user some feedback
 					statusMessage(userforms.message('REMOVED_OPTION'));
@@ -360,16 +341,6 @@
 					currentRules.append(newRule);
 				}
 			});
-			
-			$('.userforms-submissions-pagination a').entwine({
-				onclick: function(e) {
-					e.preventDefault();
-					$.get($(this).attr('href'), function(data) {
-						$('#userforms-submissions').replaceWith(data);
-					});
-					this._super();
-				}
-			})
 		});
 	});
 })(jQuery);

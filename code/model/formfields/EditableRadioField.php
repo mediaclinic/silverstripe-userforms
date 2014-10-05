@@ -9,9 +9,9 @@
 
 class EditableRadioField extends EditableMultipleOptionField {
 	
-	static $singular_name = 'Radio field';
+	private static $singular_name = 'Radio field';
 	
-	static $plural_name = 'Radio fields';
+	private static $plural_name = 'Radio fields';
 	
 	public function getFormField() {
 		$optionSet = $this->Options();
@@ -19,7 +19,7 @@ class EditableRadioField extends EditableMultipleOptionField {
 		
 		if($optionSet) {
 			foreach( $optionSet as $option ) {
-				$options[$option->Title] = $option->Title;
+				$options[$option->EscapedTitle] = $option->Title;
 			}	
 		}
 		

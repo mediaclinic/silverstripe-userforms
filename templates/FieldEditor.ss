@@ -5,25 +5,26 @@
 	
 	<div class="FieldListHold">
 		<ul class="FieldList" id="Fields_fields">
-			<% control Fields %>
+			<% loop Fields %>
 				$EditSegment
-			<% end_control %>
+			<% end_loop %>
 		</ul>
 	</div>
 	 
 	<% if canEdit %>
-	<div class="MenuHolder">
-		<h2><% _t('ADD', 'Add') %></h2>
+	<div class="MenuHolder no-change-track">
+		<h2><% _t('FieldEditor.ADD', 'Add') %></h2>
 
 		<select name="AddUserFormField" id="AddUserFormField">
-			<option value=""><% _t('SELECTAFIELD', 'Select a Field') %></option>
+			<option value=""><% _t('FieldEditor.SELECTAFIELD', 'Select a Field') %></option>
 
-			<% control CreatableFields %>
+			<% loop CreatableFields %>
 				<option value="$ClassName">$Title</option>
-			<% end_control %>
+			<% end_loop %>
 		</select>
 
-		<input type="submit" class="action" value="<% _t('ADD', 'Add') %>" /> 
+		<input type="hidden" name="SecurityID" value="$SecurityID" />
+		<input type="submit" class="action" value="<% _t('FieldEditor.ADD', 'Add') %>" /> 
 	</div>
 	<% end_if %>
 

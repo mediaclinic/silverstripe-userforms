@@ -8,7 +8,7 @@
 
 class EditableFormField extends DataObject {
 	
-	static $default_sort = "Sort";
+	private static $default_sort = "Sort";
 	
 	/**
 	 * A list of CSS classes that can be added
@@ -17,7 +17,7 @@ class EditableFormField extends DataObject {
 	 */
 	public static $allowed_css = array();
 	
-	static $db = array(
+	private static $db = array(
 		"Name" => "Varchar",
 		"Title" => "Varchar(255)",
 		"Default" => "Varchar",
@@ -29,11 +29,11 @@ class EditableFormField extends DataObject {
 		"CustomParameter" => "Varchar(200)"
 	);
 
-	static $has_one = array(
+	private static $has_one = array(
 		"Parent" => "UserDefinedForm",
 	);
 	
-	static $extensions = array(
+	private static $extensions = array(
 		"Versioned('Stage', 'Live')"
 	);
 	
@@ -67,6 +67,15 @@ class EditableFormField extends DataObject {
 	 */
 	public function EditSegment() {
 		return $this->renderWith('EditableFormField');
+	}
+	
+	/**
+	 * Flag indicating that this field will set its own error message via data-msg='' attributes
+	 * 
+	 * @return bool
+	 */
+	public function getSetsOwnError() {
+		return false;
 	}
 	
 	/**
@@ -107,6 +116,31 @@ class EditableFormField extends DataObject {
 		$this->deleteFromStage($stage);
 	}
 	
+	/**
+	 * checks wether record is new, copied from Sitetree
+	 */
+	function isNew() {
+		if(empty($this->ID)) return true;
+
+		if(is_numeric($this->ID)) return false;
+
+		return stripos($this->ID, 'new') === 0;
+	}
+
+	/**
+	 * checks if records is changed on stage
+	 * @return boolean
+	 */
+	public function getIsModifiedOnStage() {
+		// new unsaved fields could be never be published
+		if($this->isNew()) return false;
+
+		$stageVersion = Versioned::get_versionnumber_by_stage('EditableFormField', 'Stage', $this->ID);
+		$liveVersion =	Versioned::get_versionnumber_by_stage('EditableFormField', 'Live', $this->ID);
+
+		return ($stageVersion && $stageVersion != $liveVersion);
+	}
+
 	
 	/**
 	 * Show this form on load or not
@@ -157,8 +191,8 @@ class EditableFormField extends DataObject {
 	 * @param array The permissible CSS classes to add
 	 */
 	public function setAllowedCss(array $allowed) {
-		if (is_array($allowed_css)){
-			foreach ($allowed_css as $k => $v){
+		if (is_array($allowed)) {
+			foreach ($allowed as $k => $v) {
 				self::$allowed_css[$k] = (!is_null($v)) ? $v : $k;
 			}
 		}
@@ -187,7 +221,7 @@ class EditableFormField extends DataObject {
 	 * @return string
 	 */
 	public function getIcon() {
-		return 'userforms/images/' . strtolower($this->class) . '.png';
+		return USERFORMS_DIR . '/images/' . strtolower($this->class) . '.png';
 	}
 	
 	/**
@@ -303,14 +337,16 @@ class EditableFormField extends DataObject {
 	}
 	
 	/**
-	 * How to save the data submitted in this field into
-	 * the database object which this field represents.
+	 * How to save the data submitted in this field into the database object 
+	 * which this field represents.
 	 *
 	 * Any class's which call this should also call 
-	 * {@link parent::populateFromPostData()} to ensure 
-	 * that this method is called
+	 * {@link parent::populateFromPostData()} to ensure that this method is 
+	 * called
 	 *
 	 * @access public
+	 *
+	 * @param array $data
 	 */
 	public function populateFromPostData($data) {
 		$this->Title 		= (isset($data['Title'])) ? $data['Title']: "";
@@ -351,7 +387,8 @@ class EditableFormField extends DataObject {
 			
 			$this->CustomRules = serialize($rules);
 		}
-		
+
+		$this->extend('onPopulateFromPostData', $data);
 		$this->write();
 	}
 	 
@@ -390,11 +427,14 @@ class EditableFormField extends DataObject {
 			_t('EditableFormField.RIGHTTITLE', 'Right Title'), 
 			$this->getSetting('RightTitle')
 		);
-			
-		return new FieldList(
-			$ec,
-			$right
-		);
+
+        $fields = FieldList::create(
+            $ec,
+            $right
+        );
+        $this->extend('updateFieldConfiguration', $fields);
+        
+        return $fields;
 	}
 	
 	/**
@@ -414,6 +454,8 @@ class EditableFormField extends DataObject {
 				$field->performReadonlyTransformation();
 			}
 		}
+
+        $this->extend('updateFieldValidationOptions', $fields);
 		
 		return $fields;
 	}
@@ -456,7 +498,13 @@ class EditableFormField extends DataObject {
 	 * @return Array
 	 */
 	public function getValidation() {
-		return array();
+		return $this->Required
+			? array('required' => true)
+			: array();
+	}
+	
+	public function getValidationJSON() {
+		return Convert::raw2json($this->getValidation());
 	}
 	
 	/**
@@ -469,7 +517,8 @@ class EditableFormField extends DataObject {
 		$title = strip_tags("'". ($this->Title ? $this->Title : $this->Name) . "'");
 		$standard = sprintf(_t('Form.FIELDISREQUIRED', '%s is required').'.', $title);
 		
-		$errorMessage = ($this->CustomErrorMessage) ? $this->CustomErrorMessage : $standard;
+		// only use CustomErrorMessage if it has a non empty value
+		$errorMessage = (!empty($this->CustomErrorMessage)) ? $this->CustomErrorMessage : $standard;
 		
 		return DBField::create_field('Varchar', $errorMessage);
 	}

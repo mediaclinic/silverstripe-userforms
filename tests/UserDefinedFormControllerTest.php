@@ -59,9 +59,26 @@ class UserDefinedFormControllerTest extends FunctionalTest {
 	
 	function testFinished() {
 		$form = $this->setupFormFrontend();
+
+		// set formProcessed and SecurityID to replicate the form being filled out
+		$this->session()->inst_set('SecurityID', 1);
+		$this->session()->inst_set('FormProcessed', 1);
+
 		$response = $this->get($form->URLSegment.'/finished');
 		
 		$this->assertContains($form->OnCompleteMessage ,$response->getBody());
+	}
+
+	function testAppendingFinished() {
+		$form = $this->setupFormFrontend();
+
+		// replicate finished being added to the end of the form URL without the form being filled out
+		$this->session()->inst_set('SecurityID', 1);
+		$this->session()->inst_set('FormProcessed', null);
+
+		$response = $this->get($form->URLSegment.'/finished');
+		
+		$this->assertNotContains($form->OnCompleteMessage ,$response->getBody());
 	}
 	
 	function testForm() {
@@ -97,7 +114,7 @@ class UserDefinedFormControllerTest extends FunctionalTest {
 		$requiredForm = $this->objFromFixture('UserDefinedForm', 'validation-form');
 		$controller = new UserDefinedFormControllerTest_Controller($requiredForm);
 		
-		UserDefinedForm::$required_identifier = "*";
+		UserDefinedForm::config()->required_identifier = "*";
 		
 		$fields = $controller->getFormFields();
 		
@@ -140,7 +157,7 @@ class UserDefinedFormControllerTest extends FunctionalTest {
 		$actions = $controller->getFormActions();
 
 		$expected = new FieldList(new FormAction('process', 'Custom Button'));
-		$expected->push(new ResetFormAction("clearForm"));
+		$expected->push(new ResetFormAction("clearForm", "Clear"));
 		
 		$this->assertEquals($actions, $expected);
 	}

@@ -1,263 +1,164 @@
 de_DE:
-    CustomRule.ss:
-        BLANK: "Blank"
-        DELETE: "Delete"
-        GREATERTHAN: "Value Greater Than"
-        GREATERTHANEQUAL: "Value Greater Than Or Equal"
-        HIDETHISFIELD: "Hide This Field"
-        IS: "Is"
-        LESSTHAN: "Value Less Than"
-        LESSTHANEQUAL: "Value Less Than Or Equal"
-        NOTBLANK: "Not Blank"
-        NOTVALUE: "Not Value"
-        SHOWTHISFIELD: "Show This Field"
-        VALUE: "Value"
-        WHEN: "When"
-    EditableCheckbox:
-        PLURALNAME: "Checkboxes"
-        SINGULARNAME: "Checkbox Field"
-        ANY: "jede"
-        NOTSELECTED: "nicht selektiert"
-        SELECTED: "selektiert"
-    EditableCheckboxGroupField:
-        PLURALNAME: "Checkbox Groups"
-        SINGULARNAME: "Checkbox Group"
-    EditableCountryDropdownField:
-        PLURALNAME: "Country Dropdowns"
-        SINGULARNAME: "Country Dropdown"
-    EditableDateField:
-        PLURALNAME: "Date Fields"
-        SINGULARNAME: "Date Field"
-    EditableDropdown:
-        PLURALNAME: "Dropdowns"
-        SINGULARNAME: "Dropdown Field"
-    EditableEmailField:
-        PLURALNAME: "Email Fields"
-        SINGULARNAME: "Email Field"
-        SENDCOPY: "Senden Sie eine Kopie der Anfrage an diese Adresse"
-    EditableFileField:
-        PLURALNAME: "File Upload Fields"
-        SINGULARNAME: "File Upload Field"
-    EditableFormField:
-        CHECKEDBYDEFAULT: "Checked by Default?"
-        CUSTOMERROR: "Custom Error Message"
-        DEFAULTTOTODAY: "Default to Today?"
-        ENTERQUESTION: "Tragen Sie die Frage hier ein"
-        GROUP: "Group"
-        NO: "No"
-        PLURALNAME: "Editable Form Fields"
-        REQUIRED: "Pflichtfeld?"
-        RIGHTTITLE: "Right Title"
-        SINGULARNAME: "Editable Form Field"
-        YES: "Yes"
-    EditableFormField.ss:
-        ADD: "Add"
-        ADDRULE: "Add Rule"
-        BLANK: "Blank"
-        CUSTOMRULES: "Custom Rules"
-        DELETE: "Lösche dieses Feld"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        FIELDCONFIGURATION: "Field Configuration"
-        FIELDONDEFAULT: "Field On Default"
-        GREATERTHAN: "Value Greater Than"
-        GREATERTHANEQUAL: "Value Greater Than Or Equal"
-        HIDE: "Hide"
-        HIDETHISFIELD: "Hide This Field"
-        IS: "Is"
-        LESSTHAN: "Value Less Than"
-        LESSTHANEQUAL: "Value Less Than Or Equal"
-        LOCKED: "Diese Felder können nicht verändert werden"
-        NOTBLANK: "Not Blank"
-        NOTVALUE: "Not Value"
-        OPTIONS: "Options"
-        SHOW: "Show"
-        SHOWOPTIONS: "Show Options"
-        SHOWTHISFIELD: "Show This Field"
-        VALIDATION: "Validation"
-        VALUE: "Value"
-        WHEN: "When"
-        MORE: "Mehr Möglichkeiten"
-        REQUIRED: "Dieses Feld wird für dieses Formular benötigt und kann nicht gelöscht werden."
-    EditableFormHeading:
-        LEVEL: "Select Heading Level"
-        PLURALNAME: "Headings"
-        SINGULARNAME: "Heading"
-    EditableLiteralField:
-        HIDEFROMREPORT: "Hide from reports?"
-        PLURALNAME: "HTML Blocks"
-        SINGULARNAME: "HTML Block"
-    EditableMemberListField:
-        PLURALNAME: "Member List Fields"
-        SINGULARNAME: "Member List Field"
-    EditableMultipleOptionField:
-        PLURALNAME: "Editable Multiple Option Fields"
-        SINGULARNAME: "Editable Multiple Option Field"
-    EditableOption:
-        PLURALNAME: "Editable Options"
-        SINGULARNAME: "Editable Option"
-    EditableOption.ss:
-        DELETE: "Remove this option"
-        DRAG: "Drag to rearrange order of options"
-        LOCKED: "These fields cannot be modified"
-    EditableRadioField:
-        PLURALNAME: "Radio fields"
-        SINGULARNAME: "Radio field"
-    EditableTextField:
-        NUMBERROWS: "Anzahl der Zeilen"
-        PLURALNAME: "Text Fields"
-        SINGULARNAME: "Text Field"
-        TEXTLENGTH: "Textlänge"
-        DEFAULTTEXT: "Standardtext"
-        TEXTBOXLENGTH: "Länger der Textbox"
-    FieldEditor.ss:
-        ADD: "Hinzufügen"
-        SELECTAFIELD: "Select a Field"
-        CHECKBOX: "Checkbox"
-        CHECKBOXGROUP: "Checkboxen"
-        CHECKBOXGROUPTITLE: "Hinzufügen Checkbox Gruppenfeld"
-        CHECKBOXTITLE: "Checkbox hinzufügen"
-        DATE: "Datum"
-        DATETITLE: "Hinzufügen Datum Überschrift"
-        DROPDOWN: "Dropdownfeld"
-        DROPDOWNTITLE: "Dropdownfeld hinzufügen"
-        EMAIL: "E-Mail"
-        EMAILTITLE: "E-Mail Feld hinzufügen"
-        FILE: "Datei"
-        FILETITLE: "Datei-Upload Feld hinzufügen"
-        FORMHEADING: "Überschrift"
-        FORMHEADINGTITLE: "Formularüberschrift hinzufügen"
-        MEMBER: "Mitglieder Liste"
-        MEMBERTITLE: "Hinzufügen Mitglieder Liste Feld"
-        RADIOSET: "Radio"
-        RADIOSETTITLE: "Hinzufügen Radio-Button"
-        TEXT: "Text"
-        TEXTTITLE: "Textfeld hinzufügen"
-    Form:
-        FIELDISREQUIRED: "%s is required"
-    SubmittedFileField:
-        DOWNLOADFILE: "Download File"
-        PLURALNAME: "Submitted File Fields"
-        SINGULARNAME: "Submitted File Field"
-    SubmittedForm:
-        PLURALNAME: "Submitted Forms"
-        SINGULARNAME: "Submitted Form"
-    SubmittedFormField:
-        PLURALNAME: "Submitted Form Fields"
-        SINGULARNAME: "Submitted Form Field"
-    SubmittedFormReportField.ss:
-        DELETEALLSUBMISSIONS: "Delete All Submissions"
-        DELETESUBMISSION: "Delete Submission"
-        EXPORTSUBMISSIONS: "Export submissions to CSV"
-        NOSUBMISSIONS: "No Submissions"
-        SUBMITTED: "Übermittelt an"
-    UserDefinedForm:
-        AEMAILRECIPIENT: "A Email Recipient"
-        EMAILADDRESS: "Email"
-        EMAILBODY: "Body"
-        EMAILFROM: "From"
-        EMAILRECIPIENTS: "Email Recipients"
-        EMAILSUBJECT: "Email Subject"
-        FORM: "Formular"
-        FROMADDRESS: "Send Email From"
-        HIDEFORMDATA: "Hide Form Data from Email"
-        ONCOMPLETE: "Nach Fertigstellung"
-        ONCOMPLETELABEL: "Nach Vervollständigung anzeigen"
-        OPTIONS: "Options"
-        ORSELECTAFIELDTOUSEASFROM: ".. or Select a Form Field to use as the From Address"
-        ORSELECTAFIELDTOUSEASTO: ".. or Select a Field to use as the To Address"
-        PLURALNAME: "User Defined Forms"
-        RECEIVED: "Erhaltene Einreichungen"
-        SAVESUBMISSIONS: "Disable Saving Submissions to Server"
-        SENDEMAILTO: "Send Email To"
-        SENDPLAIN: "Send Email as Plain Text (HTML will be stripped)"
-        SHOWCLEARFORM: "Show Clear Form Button"
-        SINGULARNAME: "User Defined Form"
-        SUBMISSIONS: "Einreichungen"
-        SUBMITBUTTON: "Submit"
-        TEXTONSUBMIT: "Text auf der Einreich-Schaltfläche"
-        NORESULTS: "Es wurde kein passendes Ergebnis gefunden"
-        SUBMIT: "Einreichen"
-    UserDefinedForm_EmailRecipient:
-        PLURALNAME: "User Defined Form Email Recipients"
-        SINGULARNAME: "User Defined Form Email Recipient"
-    UserFormsMigrationTask:
-        DEFAULTSUBMISSIONTITLE: "Submission Data"
-    EditableCheckbox.ss:
-        CHECKBOX: "Auswahl Feld"
-        DELETE: "Lösche dieses Feld"
-        DRAG: "Ziehen und halten um die Anordnung der Felder zu verändern"
-        LOCKED: "Dieses Feld kann nicht verändert werden"
-        MORE: "Mehr Möglichkeiten"
-    EditableCheckboxGroupField.ss:
-        ADD: "Neue Option hinzufügen"
-        CHECKBOXGROUP: "Checkbox Gruppe"
-        DELETE: "Dieses Feld löschen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        LOCKED: "Diese Felder können nicht verändert werden"
-        MORE: "Mehr Optionen"
-        REQUIRED: "Dieses Feld ist für dieses Formular erforderlich und kann nicht gelöscht werden"
-    EditableCheckboxOption.ss:
-        DELETE: "Diese Option entfernen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Auswahl zu verändern"
-        LOCKED: "Diese Felder können nicht angepasst werden"
-    EditableDateField.ss:
-        DATE: "Datumsfeld"
-        DELETE: "Diese Feld löschen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        MORE: "Mehr Optionen"
-    EditableDropdown.ss:
-        ADD: "Neue Auswahl hinzufügen"
-        DELETE: "Dieses Feld löschen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        DROPDOWN: "Dropdownfeld"
-        LOCKED: "Diese Felder können nicht angepasst werden"
-        MORE: "Mehr Optionen"
-        REQUIRED: "Dieses Feld wird für dieses Formular benötigt und kann nicht gelöscht werden."
-    EditableDropdownOption.ss:
-        DELETE: "Diese Auswahl löschen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Auswahl zu verändern"
-        LOCKED: "Diese Felder können nicht verändert werden"
-    EditableEmailField.ss:
-        DELETE: "Lösche dieses Feld"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        EMAIL: "E-Mail Adress Feld"
-        MORE: "Mehr Möglichkeiten"
-        REQUIRED: "Dieses Feld wird für dieses Formular benötigt und kann nicht gelöscht werden."
-    EditableFileField.ss:
-        DELETE: "Lösche dieses Feld"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        FILE: "Dateiuplad Feld"
-        MORE: "Mehr Möglichkeiten"
-    EditableFormFieldOption.ss:
-        DELETE: "Diese Auswahl entfernen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        LOCKED: "Diese Felder können nicht verändert werden"
-    EditableFormHeading.ss:
-        DELETE: "Löschen Sie dieses Feld"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        HEADING: "Überschriftsfeld"
-        MORE: "Mehr Optionen"
-    EditableRadioField.ss:
-        ADD: "Auswahloption hinzufügen"
-        DELETE: "Dieses Feld löschen"
-        DRAG: "Klicken und Festhalten um die Anordnung der Felder zu verändern"
-        LOCKED: "Diese Felder können nicht verändert werden"
-        MORE: "Mehr Optionen"
-        REQUIRED: "Dieses Feld wird für dieses Formular benötigt, und kann deswegen nicht gelöscht werden"
-        SET: "Radiobutton"
-    EditableRadioOption.ss:
-        DELETE: "Diese Auswahloption entfernen"
-        DRAG: "Ziehen neu anordnen, von Optionen"
-        LOCKED: "Diese Felder können nicht modifiziert werden"
-    EditableTextField.ss:
-        DELETE: "Diese Feld löschen"
-        DRAG: "Ziehen neu ordnen Reihenfolge der Felder"
-        MORE: "Mehr Optionen"
-        TEXTFIELD: "Textfeld"
-    FieldEditor:
-        EMAILONSUBMIT: "Eingaben nach Absenden per E-Mail verschicken:"
-        EMAILSUBMISSION: "Anfrage absenden an:"
-    SubmittedFormEmail.ss:
-        SUBMITTED: "Die folgenden Daten wurden an Ihre Website übermittelt:"
-    UserDefinedForm_SubmittedFormEmail:
-        EMAILSUBJECT: "Eingereichtes Formular"
+  CustomRule:
+    BLANK: Leer
+    DELETE: Löschen
+    GREATERTHAN: 'Wert größer als'
+    GREATERTHANEQUAL: 'Wert größer oder gleich'
+    HIDETHISFIELD: 'Feld verstecken'
+    IS: Ist gleich
+    LESSTHAN: 'Wert kleiner als'
+    LESSTHANEQUAL: 'Wert kleiner oder gleich'
+    NOTBLANK: 'Nicht leer'
+    NOTVALUE: 'kein Wert'
+    SHOWTHISFIELD: 'Feld anzeigen'
+    VALUE: Wert
+    WHEN: Wann
+  EditableCheckbox:
+    PLURALNAME: Checkboxen
+    SINGULARNAME: 'Checkbox Feld'
+  EditableCheckboxGroupField:
+    PLURALNAME: 'Checkbox Gruppen'
+    SINGULARNAME: 'Checkbox Gruppe'
+  EditableCountryDropdownField:
+    PLURALNAME: 'Länder Dropdowns'
+    SINGULARNAME: 'Länder Dropdown'
+  EditableDateField:
+    PLURALNAME: 'Datumsfelder'
+    SINGULARNAME: 'Datumsfeld'
+  EditableDropdown:
+    PLURALNAME: Dropdowns
+    SINGULARNAME: 'Dropdown Feld'
+  EditableEmailField:
+    PLURALNAME: 'E-Mail Felder'
+    SINGULARNAME: 'E-Mail Feld'
+  EditableFileField:
+    PLURALNAME: 'Dateiupload Felder'
+    SINGULARNAME: 'Dateiupload Feld'
+  EditableFormField:
+    ADD: Hinzufügen
+    ADDLabel: 'Option hinzufügen'
+    ADDRULE: 'Regel hinzufügen'
+    BLANK: Leer
+    CHECKEDBYDEFAULT: 'Standardmäßig ist dieses Feld markiert'
+    CUSTOMERROR: 'Eigene Fehlermeldung'
+    CUSTOMRULES: 'Eigene Regeln'
+    DEFAULTTOTODAY: 'Standardmäßig auf heute'
+    DELETE: Lösche dieses Feld
+    DRAG: 'Klicken und Festhalten um die Anordnung der Felder zu verändern'
+    ENTERQUESTION: 'Tragen Sie die Frage hier ein'
+    EXTRACLASSA: 'Extra Styling/Layout'
+    EXTRACLASSB: 'Extra CSS Klasse - mehrere mit Leerzeichen trennen'
+    FIELDCONFIGURATION: 'Feld Konfiguration'
+    FIELDONDEFAULT: 'Standard Feld'
+    GREATERTHAN: 'Wert größer als'
+    GREATERTHANEQUAL: 'Wert größer oder gleich'
+    GROUP: Gruppe
+    HIDE: Verstecken
+    HIDETHISFIELD: 'Feld verstecken'
+    IS: Ist
+    LESSTHAN: 'Wert kleiner als'
+    LESSTHANEQUAL: 'Wert kleiner oder gleich'
+    LOCKED: 'Diese Felder können nicht verändert werden'
+    NOTBLANK: 'Nicht leer'
+    NOTVALUE: 'Kein Wert'
+    OPTIONS: Optionen
+    PLURALNAME: 'Editierbare Formularfelder'
+    REQUIRED: 'Pflichtfeld?'
+    RIGHTTITLE: 'Titel rechts'
+    SHOW: Zeigen
+    SHOWOPTIONS: 'Optionen anzeigen'
+    SHOWTHISFIELD: 'Feld anzeigen'
+    SINGULARNAME: 'Editierbares Formularfeld'
+    VALIDATION: Validierung
+    VALUE: Wert
+    WHEN: Wann
+  EditableFormHeading:
+    LEVEL: 'Überschriftsebene auswählen'
+    PLURALNAME: Überschriften
+    SINGULARNAME: Überschrift
+  EditableLiteralField:
+    HIDEFROMREPORT: 'Nicht in Berichten anzeigen?'
+    PLURALNAME: 'HTML Blöcke'
+    SINGULARNAME: 'HTML Block'
+  EditableMemberListField:
+    PLURALNAME: 'Member List Felder'
+    SINGULARNAME: 'Member List Feld'
+  EditableMultipleOptionField:
+    PLURALNAME: 'Editierbare Multi-Option Felder'
+    SINGULARNAME: 'Editierbares Multi-Option Feld'
+  EditableNumericField:
+    PLURALNAME: 'Zahlenfelder'
+    SINGULARNAME: 'Zahlenfeld'
+  EditableOption:
+    DELETE: 'Option entfernen'
+    DRAG: 'Ziehen um Optionen neu zu ordnen'
+    LOCKED: 'Diese Felder können nicht verändert werden'
+    PLURALNAME: 'Editierbare Optionen'
+    SINGULARNAME: 'Editierbare Option'
+  EditableRadioField:
+    PLURALNAME: 'Radio-Buttons'
+    SINGULARNAME: 'Radio-Button'
+  EditableTextField:
+    NUMBERROWS: 'Anzahl der Zeilen'
+    PLURALNAME: 'Textfelder'
+    SINGULARNAME: 'Textfeld'
+    TEXTLENGTH: 'Textlänge'
+  EditableUploadField:
+    SELECTUPLOADFOLDER: 'Ordner für den Upload auswählen'
+  FieldEditor:
+    ADD: Hinzufügen
+    SELECTAFIELD: 'Feld auswählen'
+  Form:
+    FIELDISREQUIRED: '%s ist ein Pflichtfeld'
+  GridField:
+    Filter: Filter
+    ResetFilter: Zurücksetzen
+  SiteTree:
+    PLURALNAME: Seiten
+    SINGULARNAME: Seite
+  SubmittedFileField:
+    DOWNLOADFILE: 'Datei herunterladen'
+    PLURALNAME: 'Abgesendete Dateifelder'
+    SINGULARNAME: 'Abgesendetes Dateifeld'
+  SubmittedForm:
+    PLURALNAME: 'Abgesendete Formulare'
+    SINGULARNAME: 'Abgesendetes Formular'
+  SubmittedFormField:
+    PLURALNAME: 'Abgesendete Formularfelder'
+    SINGULARNAME: 'Abgesendetes Formularfeld'
+  UserDefinedForm:
+    ADDEMAILRECIPIENT: 'E-Mail Empfänger hinzufügen'
+    CLEARBUTTON: Löschen
+    CONFIGURATION: Konfiguration
+    DESCRIPTION: 'Fügt ein anpassbares Formular hinzu.'
+    EMAILADDRESS: E-Mail
+    EMAILBODY: Inhalt
+    EMAILFROM: Von
+    EMAILRECIPIENTS: 'E-Mail Empfänger'
+    EMAILSUBJECT: 'Betreff'
+    ENABLELIVEVALIDATION: 'Live Validierung einschalten'
+    EmailFromContent: 'Mit der Absenderadresse können Sie bestimmen, von welcher Adresse aus die E-Mail versendet wird. Meistens ist es eine Adresse der selben Domain wie die Webseite. Die Webseite meineseite.com benötigt z.B. irgendwas@meineseite.com. Sie können zusätzlich jede Adresse als "Antworten an" eintragen.'
+    FORM: Formular
+    FROMADDRESS: 'E-Mail versendet von'
+    HIDEFIELDLABELS: 'Feldbezeichnungen verbergen'
+    HIDEFORMDATA: 'Formulardaten in E-Mail nicht anzeigen'
+    ONCOMPLETELABEL: 'Nach Vervollständigung anzeigen'
+    ORSELECTAFIELDTOUSEASFROM: '.. oder wähle ein Formularfeld als Absenderadresse'
+    ORSELECTAFIELDTOUSEASTO: '.. oder wähle ein Formularfeld als Empfängeradresse'
+    PLURALNAME: 'Anpassbare Formulare'
+    REPLYADDRESS: 'E-Mail Adresse für "Antworten an"'
+    SAVESUBMISSIONS: 'Speichern von Einreichungen deaktivieren'
+    SENDEMAILTO: 'E-Mail senden an'
+    SENDPLAIN: 'E-Mail als Text versenden (HTML wird entfernt)'
+    SHOWCLEARFORM: '"Formular zurücksetzen" Button anzeigen'
+    SINGULARNAME: 'Anpassbares Formular'
+    SUBMISSIONS: Einreichungen
+    SUBMITBUTTON: Senden
+    TEXTONCLEAR: 'Text auf der Löschen-Schaltfläche:'
+    TEXTONSUBMIT: 'Text auf der Einreich-Schaltfläche:'
+  UserDefinedForm_EmailRecipient:
+    PLURALNAME: 'Anpassbares Formular E-Mail Empfänger'
+    SINGULARNAME: 'Anpassbares Formular E-Mail Empfänger'
+  UserFormsGridFieldFilterHeader:
+    FILTERSUBMISSIONS: 'Einreichungen filtern...'
+    WHEREVALUEIS: 'nach Wert...'

@@ -9,17 +9,17 @@
 
 class EditableCheckboxGroupField extends EditableMultipleOptionField {
 
-	static $singular_name = "Checkbox Group";
+	private static $singular_name = "Checkbox Group";
 	
-	static $plural_name = "Checkbox Groups";
+	private static $plural_name = "Checkbox Groups";
 	
 	public function getFormField() {
 		$optionSet = $this->Options();
 		$options = array();
-		
-		$optionMap = ($optionSet) ? $optionSet->map('Title', 'Title') : array();
-		
-		return new CheckboxSetField($this->Name, $this->Title, $optionMap);
+
+		$optionMap = ($optionSet) ? $optionSet->map('EscapedTitle', 'Title') : array();
+
+		return new UserFormsCheckboxSetField($this->Name, $this->Title, $optionMap);
 	}
 	
 	public function getValueFromData($data) {

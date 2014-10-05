@@ -9,22 +9,40 @@
 
 class EditableOption extends DataObject {
 	
-	static $default_sort = "Sort";
+	private static $default_sort = "Sort";
 
-	static $db = array(
+	private static $db = array(
 		"Name" => "Varchar(255)",
 		"Title" => "Varchar(255)",
 		"Default" => "Boolean",
 		"Sort" => "Int"
 	);
 	
-	static $has_one = array(
+	private static $has_one = array(
 		"Parent" => "EditableMultipleOptionField",
 	);
 	
-	static $extensions = array(
+	private static $extensions = array(
 		"Versioned('Stage', 'Live')"
 	);
+
+    /**
+     * @param Member $member
+     *
+     * @return boolean
+     */
+    public function canEdit($member = null) {
+    	return ($this->Parent()->canEdit($member));
+    }
+
+    /**
+     * @param Member $member
+     *
+     * @return boolean
+     */
+    public function canDelete($member = null) {
+    	return ($this->Parent()->canDelete($member));
+    }
 
 	/**
 	 * Template for the editing view of this option field
@@ -70,4 +88,8 @@ class EditableOption extends DataObject {
 		$this->readonly = true;
 		return $this->EditSegment();
 	}
+
+    public function getEscapedTitle() {
+        return Convert::raw2att($this->Title);
+    }
 }

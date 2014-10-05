@@ -1,6 +1,5 @@
 <?php
 
-LeftAndMain::require_javascript('userforms/javascript/FieldEditor.js');
-LeftAndMain::require_css('userforms/css/FieldEditor.css');
-
-?>
+if(!defined('USERFORMS_DIR')) {
+	define('USERFORMS_DIR', basename(__DIR__));
+}

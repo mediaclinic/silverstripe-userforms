@@ -9,9 +9,9 @@
 
 class EditableTextField extends EditableFormField {
 
-	static $singular_name = 'Text Field';
+	private static $singular_name = 'Text Field';
 	
-	static $plural_name = 'Text Fields';
+	private static $plural_name = 'Text Fields';
 	
 	public function getFieldConfiguration() {
 		$fields = parent::getFieldConfiguration();
@@ -23,10 +23,11 @@ class EditableTextField extends EditableFormField {
 		
 		$extraFields = new FieldList(
 			new FieldGroup(_t('EditableTextField.TEXTLENGTH', 'Text length'),
-				new TextField($this->getSettingName('MinLength'), "", $min),
-				new TextField($this->getSettingName('MaxLength'), " - ", $max)
+				new NumericField($this->getSettingName('MinLength'), "", $min),
+				new NumericField($this->getSettingName('MaxLength'), " - ", $max)
 			),
-			new TextField($this->getSettingName('Rows'), _t('EditableTextField.NUMBERROWS', 'Number of rows'), $rows)
+			new NumericField($this->getSettingName('Rows'), _t('EditableTextField.NUMBERROWS',
+				'Number of rows'), $rows)
 		);
 		
 		$fields->merge($extraFields);
@@ -57,13 +58,15 @@ class EditableTextField extends EditableFormField {
 	 * @return array
 	 */
 	public function getValidation() {
-		$options = array();
+		$options = parent::getValidation();
 		
-		if($this->getSetting('MinLength')) 
+		if($this->getSetting('MinLength')) {
 			$options['minlength'] = $this->getSetting('MinLength');
+		}
 			
-		if($this->getSetting('MaxLength')) 
+		if($this->getSetting('MaxLength')) {
 			$options['maxlength'] = $this->getSetting('MaxLength');
+		}
 		
 		return $options;
 	}

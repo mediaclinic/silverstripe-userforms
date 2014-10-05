@@ -38,9 +38,6 @@ class UserDefinedFormTest extends FunctionalTest {
 	}
 	
 	function testGetCMSFields() {
-		// ensure all the tabs are present.
-		// @todo a common bug with this is translations messing up the tabs.
-		// @todo only logic we should check for is that the tablelistfield filter
 		$this->logInWithPermission('ADMIN');
 		$form = $this->objFromFixture('UserDefinedForm', 'basic-form-page');
 		
@@ -209,16 +206,6 @@ class UserDefinedFormTest extends FunctionalTest {
 		
 		// can't compare object since the dates/ids change
 		$this->assertEquals($form->Fields()->First()->Title, $duplicate->Fields()->First()->Title);
-	}
-	
-	/**
-	 * @todo once getIsModifiedOnStage is implemented will need to implement this
-	 */
-	function testGetIsModifiedOnStage() {
-		$this->logInWithPermission('ADMIN');
-		$form = $this->objFromFixture('UserDefinedForm', 'basic-form-page');
-		
-		$this->assertTrue($form->getIsModifiedOnStage());
 	}
 
 	function testFormOptions() {
